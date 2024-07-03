@@ -1,2 +1,7 @@
-[go-lsp]2024/07/03 21:22:18 main.go:13: Starting LSP server
-[go-lsp]2024/07/03 21:22:18 main.go:30: Received message with method: initialize
+[go-lsp]2024/07/04 01:49:36 main.go:15: Starting LSP server
+[go-lsp]2024/07/04 01:49:36 main.go:32: Received message with method: initialize
+[go-lsp]2024/07/04 01:49:36 main.go:41: Connected to: Neovim 0.10.0-dev
+[go-lsp]2024/07/04 01:49:36 main.go:49: Sent the reply
+[go-lsp]2024/07/04 01:49:36 main.go:32: Received message with method: initialized
+[go-lsp]2024/07/04 01:49:36 main.go:32: Received message with method: textDocument/didOpen
+[go-lsp]2024/07/04 01:51:54 main.go:32: Received message with method: shutdown

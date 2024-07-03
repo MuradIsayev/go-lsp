@@ -2,9 +2,11 @@ package main
 
 import (
 	"bufio"
+	"encoding/json"
 	"log"
 	"os"
 
+	"github.com/MuradIsayev/go-lsp/lsp"
 	"github.com/MuradIsayev/go-lsp/rpc"
 )
 
@@ -26,8 +28,26 @@ func main() {
 
 }
 
-func handleMessage(logger *log.Logger, method string, msg []byte) {
+func handleMessage(logger *log.Logger, method string, contents []byte) {
 	logger.Printf("Received message with method: %s", method)
+
+	switch method {
+	case "initialize":
+		var request lsp.InitializeRequest
+		if err := json.Unmarshal(contents, &request); err != nil {
+			logger.Printf("Couldn't parse the content with initialize method: %s", err)
+		}
+
+		logger.Printf("Connected to: %s %s", request.Params.ClientInfo.Name, request.Params.ClientInfo.Version)
+
+		msg := lsp.NewInitializeResponse(request.ID)
+		reply := rpc.EncodeMessage(msg)
+
+		writer := os.Stdout
+		writer.Write([]byte(reply))
+
+		logger.Print("Sent the reply")
+	}
 }
 
 func GetLogger(filename string) *log.Logger {
