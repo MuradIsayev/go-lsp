@@ -6,6 +6,7 @@ import (
 	"log"
 	"os"
 
+	"github.com/MuradIsayev/go-lsp/analysis"
 	"github.com/MuradIsayev/go-lsp/lsp"
 	"github.com/MuradIsayev/go-lsp/rpc"
 )
@@ -16,6 +17,9 @@ func main() {
 
 	scanner := bufio.NewScanner(os.Stdin)
 	scanner.Split(rpc.Split)
+
+	state := analysis.NewState()
+
 	for scanner.Scan() {
 		msg := scanner.Bytes()
 		method, contents, err := rpc.DecodeMessage(msg)
@@ -23,12 +27,12 @@ func main() {
 			logger.Println("Failed to decode message: ", err)
 			continue
 		}
-		handleMessage(logger, method, contents)
+		handleMessage(logger, state, method, contents)
 	}
 
 }
 
-func handleMessage(logger *log.Logger, method string, contents []byte) {
+func handleMessage(logger *log.Logger, state analysis.State, method string, contents []byte) {
 	logger.Printf("Received message with method: %s", method)
 
 	switch method {
@@ -47,7 +51,32 @@ func handleMessage(logger *log.Logger, method string, contents []byte) {
 		writer.Write([]byte(reply))
 
 		logger.Print("Sent the reply")
+
+	case "textDocument/didOpen":
+		var notification lsp.DidOpenTextDocomentNotification
+		if err := json.Unmarshal(contents, &notification); err != nil {
+			logger.Printf("Couldn't parse the content with textDocument/didOpen method: %s", err)
+			return
+		}
+
+		logger.Printf("Opened: %s", notification.Params.TextDocument.URI)
+
+		// We got a document, and we have opened it
+		state.OpenDocument(notification.Params.TextDocument.URI, notification.Params.TextDocument.Text)
+	case "textDocument/didChange":
+		var notification lsp.DidChangeTextDocumentNotification
+		if err := json.Unmarshal(contents, &notification); err != nil {
+			logger.Printf("Couldn't parse the content with textDocument/didChange method: %s", err)
+			return
+		}
+
+		logger.Printf("Changed: %s %s", notification.Params.TextDocument.TextDocumentIdentifier.URI, notification.Params.ContentChanges)
+
+		for _, change := range notification.Params.ContentChanges {
+			state.UpdateDocument(notification.Params.TextDocument.TextDocumentIdentifier.URI, change.Text)
+		}
 	}
+
 }
 
 func GetLogger(filename string) *log.Logger {
