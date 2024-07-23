@@ -25,7 +25,8 @@ type InitializeResult struct {
 }
 
 type ServerCapabilities struct {
-	TextDocumentSync int `json:"textDocumentSync"`
+	TextDocumentSync int  `json:"textDocumentSync"`
+	HoverProvider    bool `json:"hoverProvider"`
 }
 
 type ServerInfo struct {
@@ -43,6 +44,8 @@ func NewInitializeResponse(id int) InitializeResponse {
 			Capabilities: ServerCapabilities{
 				// tells IDE (client) to always send the whole document/file
 				TextDocumentSync: 1,
+				// tells IDE (client) that we support hover provider
+				HoverProvider: true,
 			},
 			ServerInfo: ServerInfo{
 				Name:    "go-lsp",

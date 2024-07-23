@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"encoding/json"
+	"io"
 	"log"
 	"os"
 
@@ -19,6 +20,7 @@ func main() {
 	scanner.Split(rpc.Split)
 
 	state := analysis.NewState()
+	writer := os.Stdout
 
 	for scanner.Scan() {
 		msg := scanner.Bytes()
@@ -27,12 +29,12 @@ func main() {
 			logger.Println("Failed to decode message: ", err)
 			continue
 		}
-		handleMessage(logger, state, method, contents)
+		handleMessage(logger, writer, state, method, contents)
 	}
 
 }
 
-func handleMessage(logger *log.Logger, state analysis.State, method string, contents []byte) {
+func handleMessage(logger *log.Logger, writer io.Writer, state analysis.State, method string, contents []byte) {
 	logger.Printf("Received message with method: %s", method)
 
 	switch method {
@@ -45,10 +47,8 @@ func handleMessage(logger *log.Logger, state analysis.State, method string, cont
 		logger.Printf("Connected to: %s %s", request.Params.ClientInfo.Name, request.Params.ClientInfo.Version)
 
 		msg := lsp.NewInitializeResponse(request.ID)
-		reply := rpc.EncodeMessage(msg)
 
-		writer := os.Stdout
-		writer.Write([]byte(reply))
+		writeResponse(writer, msg)
 
 		logger.Print("Sent the reply")
 
@@ -75,8 +75,31 @@ func handleMessage(logger *log.Logger, state analysis.State, method string, cont
 		for _, change := range notification.Params.ContentChanges {
 			state.UpdateDocument(notification.Params.TextDocument.TextDocumentIdentifier.URI, change.Text)
 		}
+	case "textDocument/hover":
+		var request lsp.HoverRequest
+		if err := json.Unmarshal(contents, &request); err != nil {
+			logger.Printf("Couldn't parse the content with textDocument/hover method: %s", err)
+			return
+		}
+
+		response := lsp.HoverResponse{
+			Response: lsp.Response{
+				RPC: "2.0",
+				ID:  &request.ID,
+			},
+			Result: lsp.HoverResult{
+				Contents: "Hello from HOVER method of LSP",
+			},
+		}
+
+		writeResponse(writer, response)
 	}
 
+}
+
+func writeResponse(writer io.Writer, msg any) {
+	reply := rpc.EncodeMessage(msg)
+	writer.Write([]byte(reply))
 }
 
 func GetLogger(filename string) *log.Logger {
