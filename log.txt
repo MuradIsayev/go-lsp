@@ -1,92 +1,16 @@
-[go-lsp]2024/07/24 01:11:09 main.go:17: Starting LSP server
-[go-lsp]2024/07/24 01:11:09 main.go:38: Received message with method: initialize
-[go-lsp]2024/07/24 01:11:09 main.go:47: Connected to: Neovim 0.10.0-dev
-[go-lsp]2024/07/24 01:11:09 main.go:53: Sent the reply
-[go-lsp]2024/07/24 01:11:16 main.go:38: Received message with method: initialized
-[go-lsp]2024/07/24 01:11:16 main.go:38: Received message with method: textDocument/didOpen
-[go-lsp]2024/07/24 01:11:16 main.go:62: Opened: file:///Users/asmarisayeva/Documents/Projects/go-lsp/README.md
-[go-lsp]2024/07/24 01:11:30 main.go:38: Received message with method: textDocument/hover
-[go-lsp]2024/07/24 01:11:30 main.go:38: Received message with method: textDocument/didOpen
-[go-lsp]2024/07/24 01:11:30 main.go:62: Opened: file://
-[go-lsp]2024/07/24 01:11:30 main.go:38: Received message with method: textDocument/didChange
-[go-lsp]2024/07/24 01:11:30 main.go:73: Changed: file:// [{Hello from HOVER method of LSP
+[go-lsp]2024/07/24 21:25:36 main.go:17: Starting LSP server
+[go-lsp]2024/07/24 21:25:36 main.go:38: Received message with method: initialize
+[go-lsp]2024/07/24 21:25:36 main.go:47: Connected to: Neovim 0.10.0-dev
+[go-lsp]2024/07/24 21:25:36 main.go:53: Sent the reply
+[go-lsp]2024/07/24 21:25:36 main.go:38: Received message with method: initialized
+[go-lsp]2024/07/24 21:25:36 main.go:38: Received message with method: textDocument/didOpen
+[go-lsp]2024/07/24 21:25:36 main.go:62: Opened: file:///Users/asmarisayeva/Documents/Projects/go-lsp/README.md
+[go-lsp]2024/07/24 21:25:43 main.go:38: Received message with method: textDocument/hover
+[go-lsp]2024/07/24 21:25:43 main.go:38: Received message with method: textDocument/didOpen
+[go-lsp]2024/07/24 21:25:43 main.go:62: Opened: file://
+[go-lsp]2024/07/24 21:25:43 main.go:38: Received message with method: textDocument/didChange
+[go-lsp]2024/07/24 21:25:43 main.go:73: Changed: file:// [{File file:///Users/asmarisayeva/Documents/Projects/go-lsp/README.md, Total Characters 11, Hover Position: Line=0 Character=4
 }]
-[go-lsp]2024/07/24 01:12:06 main.go:38: Received message with method: textDocument/didClose
-[go-lsp]2024/07/24 01:12:07 main.go:38: Received message with method: textDocument/hover
-[go-lsp]2024/07/24 01:12:07 main.go:38: Received message with method: textDocument/didOpen
-[go-lsp]2024/07/24 01:12:07 main.go:62: Opened: file://
-[go-lsp]2024/07/24 01:12:07 main.go:38: Received message with method: textDocument/didChange
-[go-lsp]2024/07/24 01:12:07 main.go:73: Changed: file:// [{Hello from HOVER method of LSP
-}]
-[go-lsp]2024/07/24 01:12:16 main.go:38: Received message with method: textDocument/didChange
-[go-lsp]2024/07/24 01:12:16 main.go:73: Changed: file:///Users/asmarisayeva/Documents/Projects/go-lsp/README.md [{# `goj-lsp`
-}]
-[go-lsp]2024/07/24 01:12:16 main.go:38: Received message with method: textDocument/didClose
-[go-lsp]2024/07/24 01:12:17 main.go:38: Received message with method: textDocument/didChange
-[go-lsp]2024/07/24 01:12:17 main.go:73: Changed: file:///Users/asmarisayeva/Documents/Projects/go-lsp/README.md [{# `gojk-lsp`
-}]
-[go-lsp]2024/07/24 01:12:18 main.go:38: Received message with method: textDocument/didChange
-[go-lsp]2024/07/24 01:12:18 main.go:73: Changed: file:///Users/asmarisayeva/Documents/Projects/go-lsp/README.md [{# `gojki-lsp`
-}]
-[go-lsp]2024/07/24 01:12:19 main.go:38: Received message with method: textDocument/didChange
-[go-lsp]2024/07/24 01:12:19 main.go:73: Changed: file:///Users/asmarisayeva/Documents/Projects/go-lsp/README.md [{# `gojkiu-lsp`
-}]
-[go-lsp]2024/07/24 01:12:19 main.go:38: Received message with method: textDocument/didChange
-[go-lsp]2024/07/24 01:12:19 main.go:73: Changed: file:///Users/asmarisayeva/Documents/Projects/go-lsp/README.md [{# `go-lsp`
-}]
-[go-lsp]2024/07/24 01:12:20 main.go:38: Received message with method: textDocument/didChange
-[go-lsp]2024/07/24 01:12:20 main.go:73: Changed: file:///Users/asmarisayeva/Documents/Projects/go-lsp/README.md [{# `go-lsp`
-
-}]
-[go-lsp]2024/07/24 01:12:21 main.go:38: Received message with method: textDocument/hover
-[go-lsp]2024/07/24 01:12:21 main.go:38: Received message with method: textDocument/didOpen
-[go-lsp]2024/07/24 01:12:21 main.go:62: Opened: file://
-[go-lsp]2024/07/24 01:12:22 main.go:38: Received message with method: textDocument/didChange
-[go-lsp]2024/07/24 01:12:22 main.go:73: Changed: file:// [{Hello from HOVER method of LSP
-}]
-[go-lsp]2024/07/24 01:12:22 main.go:38: Received message with method: textDocument/didClose
-[go-lsp]2024/07/24 01:12:23 main.go:38: Received message with method: textDocument/hover
-[go-lsp]2024/07/24 01:12:23 main.go:38: Received message with method: textDocument/didOpen
-[go-lsp]2024/07/24 01:12:23 main.go:62: Opened: file://
-[go-lsp]2024/07/24 01:12:23 main.go:38: Received message with method: textDocument/didChange
-[go-lsp]2024/07/24 01:12:23 main.go:73: Changed: file:// [{Hello from HOVER method of LSP
-}]
-[go-lsp]2024/07/24 01:12:24 main.go:38: Received message with method: textDocument/didClose
-[go-lsp]2024/07/24 01:12:25 main.go:38: Received message with method: textDocument/hover
-[go-lsp]2024/07/24 01:12:25 main.go:38: Received message with method: textDocument/didOpen
-[go-lsp]2024/07/24 01:12:25 main.go:62: Opened: file://
-[go-lsp]2024/07/24 01:12:25 main.go:38: Received message with method: textDocument/didChange
-[go-lsp]2024/07/24 01:12:25 main.go:73: Changed: file:// [{Hello from HOVER method of LSP
-}]
-[go-lsp]2024/07/24 01:12:25 main.go:38: Received message with method: textDocument/didClose
-[go-lsp]2024/07/24 01:12:27 main.go:38: Received message with method: textDocument/hover
-[go-lsp]2024/07/24 01:12:27 main.go:38: Received message with method: textDocument/didOpen
-[go-lsp]2024/07/24 01:12:27 main.go:62: Opened: file://
-[go-lsp]2024/07/24 01:12:27 main.go:38: Received message with method: textDocument/didChange
-[go-lsp]2024/07/24 01:12:27 main.go:73: Changed: file:// [{Hello from HOVER method of LSP
-}]
-[go-lsp]2024/07/24 01:12:28 main.go:38: Received message with method: textDocument/didClose
-[go-lsp]2024/07/24 01:12:29 main.go:38: Received message with method: textDocument/hover
-[go-lsp]2024/07/24 01:12:29 main.go:38: Received message with method: textDocument/didOpen
-[go-lsp]2024/07/24 01:12:29 main.go:62: Opened: file://
-[go-lsp]2024/07/24 01:12:29 main.go:38: Received message with method: textDocument/didChange
-[go-lsp]2024/07/24 01:12:29 main.go:73: Changed: file:// [{Hello from HOVER method of LSP
-}]
-[go-lsp]2024/07/24 01:12:37 main.go:38: Received message with method: textDocument/didChange
-[go-lsp]2024/07/24 01:12:37 main.go:73: Changed: file:///Users/asmarisayeva/Documents/Projects/go-lsp/README.md [{# `go-alsp`
-
-}]
-[go-lsp]2024/07/24 01:12:37 main.go:38: Received message with method: textDocument/didClose
-[go-lsp]2024/07/24 01:12:37 main.go:38: Received message with method: textDocument/didChange
-[go-lsp]2024/07/24 01:12:37 main.go:73: Changed: file:///Users/asmarisayeva/Documents/Projects/go-lsp/README.md [{# `go-asdlsp`
-
-}]
-[go-lsp]2024/07/24 01:12:37 main.go:38: Received message with method: textDocument/didChange
-[go-lsp]2024/07/24 01:12:37 main.go:73: Changed: file:///Users/asmarisayeva/Documents/Projects/go-lsp/README.md [{# `go-asdalsp`
-
-}]
-[go-lsp]2024/07/24 01:12:38 main.go:38: Received message with method: textDocument/didChange
-[go-lsp]2024/07/24 01:12:38 main.go:73: Changed: file:///Users/asmarisayeva/Documents/Projects/go-lsp/README.md [{# `go-lsp`
-
-}]
-[go-lsp]2024/07/24 01:12:42 main.go:38: Received message with method: shutdown
+[go-lsp]2024/07/24 21:25:44 main.go:38: Received message with method: textDocument/didClose
+[go-lsp]2024/07/24 21:25:45 main.go:38: Received message with method: textDocument/definition
+[go-lsp]2024/07/24 21:32:00 main.go:38: Received message with method: shutdown
