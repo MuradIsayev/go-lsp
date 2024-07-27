@@ -28,6 +28,7 @@ type ServerCapabilities struct {
 	TextDocumentSync   int  `json:"textDocumentSync"`
 	HoverProvider      bool `json:"hoverProvider"`
 	DefinitionProvider bool `json:"definitionProvider"`
+	CodeActionProvider bool `json:"codeActionProvider"`
 }
 
 type ServerInfo struct {
@@ -49,6 +50,8 @@ func NewInitializeResponse(id int) InitializeResponse {
 				HoverProvider: true,
 				// tells IDE (client) that we support definition provider
 				DefinitionProvider: true,
+				// tells IDE (client) that we support code action provider
+				CodeActionProvider: true,
 			},
 			ServerInfo: ServerInfo{
 				Name:    "go-lsp",

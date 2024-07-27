@@ -1,16 +1,98 @@
-[go-lsp]2024/07/24 21:25:36 main.go:17: Starting LSP server
-[go-lsp]2024/07/24 21:25:36 main.go:38: Received message with method: initialize
-[go-lsp]2024/07/24 21:25:36 main.go:47: Connected to: Neovim 0.10.0-dev
-[go-lsp]2024/07/24 21:25:36 main.go:53: Sent the reply
-[go-lsp]2024/07/24 21:25:36 main.go:38: Received message with method: initialized
-[go-lsp]2024/07/24 21:25:36 main.go:38: Received message with method: textDocument/didOpen
-[go-lsp]2024/07/24 21:25:36 main.go:62: Opened: file:///Users/asmarisayeva/Documents/Projects/go-lsp/README.md
-[go-lsp]2024/07/24 21:25:43 main.go:38: Received message with method: textDocument/hover
-[go-lsp]2024/07/24 21:25:43 main.go:38: Received message with method: textDocument/didOpen
-[go-lsp]2024/07/24 21:25:43 main.go:62: Opened: file://
-[go-lsp]2024/07/24 21:25:43 main.go:38: Received message with method: textDocument/didChange
-[go-lsp]2024/07/24 21:25:43 main.go:73: Changed: file:// [{File file:///Users/asmarisayeva/Documents/Projects/go-lsp/README.md, Total Characters 11, Hover Position: Line=0 Character=4
+[go-lsp]2024/07/27 11:38:15 main.go:17: Starting LSP server
+[go-lsp]2024/07/27 11:38:15 main.go:38: Received message with method: initialize
+[go-lsp]2024/07/27 11:38:15 main.go:47: Connected to: Neovim 0.10.0-dev
+[go-lsp]2024/07/27 11:38:15 main.go:53: Sent the reply
+[go-lsp]2024/07/27 11:38:15 main.go:38: Received message with method: initialized
+[go-lsp]2024/07/27 11:38:15 main.go:38: Received message with method: textDocument/didOpen
+[go-lsp]2024/07/27 11:38:15 main.go:62: Opened: file:///Users/asmarisayeva/Documents/Projects/go-lsp/README.md
+[go-lsp]2024/07/27 11:38:17 main.go:38: Received message with method: textDocument/didChange
+[go-lsp]2024/07/27 11:38:17 main.go:73: Changed: file:///Users/asmarisayeva/Documents/Projects/go-lsp/README.md [{
+# `go-lsp`
 }]
-[go-lsp]2024/07/24 21:25:44 main.go:38: Received message with method: textDocument/didClose
-[go-lsp]2024/07/24 21:25:45 main.go:38: Received message with method: textDocument/definition
-[go-lsp]2024/07/24 21:32:00 main.go:38: Received message with method: shutdown
+[go-lsp]2024/07/27 11:38:18 main.go:38: Received message with method: textDocument/didChange
+[go-lsp]2024/07/27 11:38:18 main.go:73: Changed: file:///Users/asmarisayeva/Documents/Projects/go-lsp/README.md [{i
+# `go-lsp`
+}]
+[go-lsp]2024/07/27 11:38:18 main.go:38: Received message with method: textDocument/didChange
+[go-lsp]2024/07/27 11:38:18 main.go:73: Changed: file:///Users/asmarisayeva/Documents/Projects/go-lsp/README.md [{im
+# `go-lsp`
+}]
+[go-lsp]2024/07/27 11:38:18 main.go:38: Received message with method: textDocument/didChange
+[go-lsp]2024/07/27 11:38:18 main.go:73: Changed: file:///Users/asmarisayeva/Documents/Projects/go-lsp/README.md [{imp
+# `go-lsp`
+}]
+[go-lsp]2024/07/27 11:38:18 main.go:38: Received message with method: textDocument/didChange
+[go-lsp]2024/07/27 11:38:18 main.go:73: Changed: file:///Users/asmarisayeva/Documents/Projects/go-lsp/README.md [{impor
+# `go-lsp`
+}]
+[go-lsp]2024/07/27 11:38:18 main.go:38: Received message with method: textDocument/didChange
+[go-lsp]2024/07/27 11:38:18 main.go:73: Changed: file:///Users/asmarisayeva/Documents/Projects/go-lsp/README.md [{import 
+# `go-lsp`
+}]
+[go-lsp]2024/07/27 11:38:18 main.go:38: Received message with method: textDocument/didChange
+[go-lsp]2024/07/27 11:38:18 main.go:73: Changed: file:///Users/asmarisayeva/Documents/Projects/go-lsp/README.md [{import "
+# `go-lsp`
+}]
+[go-lsp]2024/07/27 11:38:18 main.go:38: Received message with method: textDocument/didChange
+[go-lsp]2024/07/27 11:38:18 main.go:73: Changed: file:///Users/asmarisayeva/Documents/Projects/go-lsp/README.md [{import ""
+# `go-lsp`
+}]
+[go-lsp]2024/07/27 11:38:19 main.go:38: Received message with method: textDocument/didChange
+[go-lsp]2024/07/27 11:38:19 main.go:73: Changed: file:///Users/asmarisayeva/Documents/Projects/go-lsp/README.md [{import "f"
+# `go-lsp`
+}]
+[go-lsp]2024/07/27 11:38:19 main.go:38: Received message with method: textDocument/didChange
+[go-lsp]2024/07/27 11:38:19 main.go:73: Changed: file:///Users/asmarisayeva/Documents/Projects/go-lsp/README.md [{import "fm"
+# `go-lsp`
+}]
+[go-lsp]2024/07/27 11:38:19 main.go:38: Received message with method: textDocument/didChange
+[go-lsp]2024/07/27 11:38:19 main.go:73: Changed: file:///Users/asmarisayeva/Documents/Projects/go-lsp/README.md [{import "fmt"
+# `go-lsp`
+}]
+[go-lsp]2024/07/27 11:38:20 main.go:38: Received message with method: textDocument/didChange
+[go-lsp]2024/07/27 11:38:20 main.go:73: Changed: file:///Users/asmarisayeva/Documents/Projects/go-lsp/README.md [{import "fmt"
+
+# `go-lsp`
+}]
+[go-lsp]2024/07/27 11:38:20 main.go:38: Received message with method: textDocument/didChange
+[go-lsp]2024/07/27 11:38:20 main.go:73: Changed: file:///Users/asmarisayeva/Documents/Projects/go-lsp/README.md [{import "fmt"
+as
+# `go-lsp`
+}]
+[go-lsp]2024/07/27 11:38:20 main.go:38: Received message with method: textDocument/didChange
+[go-lsp]2024/07/27 11:38:20 main.go:73: Changed: file:///Users/asmarisayeva/Documents/Projects/go-lsp/README.md [{import "fmt"
+asjdaskj
+# `go-lsp`
+}]
+[go-lsp]2024/07/27 11:38:20 main.go:38: Received message with method: textDocument/didChange
+[go-lsp]2024/07/27 11:38:20 main.go:73: Changed: file:///Users/asmarisayeva/Documents/Projects/go-lsp/README.md [{import "fmt"
+asjdaskj 
+# `go-lsp`
+}]
+[go-lsp]2024/07/27 11:38:21 main.go:38: Received message with method: textDocument/didChange
+[go-lsp]2024/07/27 11:38:21 main.go:73: Changed: file:///Users/asmarisayeva/Documents/Projects/go-lsp/README.md [{import "fmt"
+asjdaskj 
+
+# `go-lsp`
+}]
+[go-lsp]2024/07/27 11:38:22 main.go:38: Received message with method: textDocument/codeAction
+[go-lsp]2024/07/27 11:38:22 main.go:38: Received message with method: textDocument/didChange
+[go-lsp]2024/07/27 11:38:22 main.go:73: Changed: file:///Users/asmarisayeva/Documents/Projects/go-lsp/README.md [{import 
+asjdaskj 
+
+# `go-lsp`
+}]
+[go-lsp]2024/07/27 11:38:24 main.go:38: Received message with method: textDocument/didChange
+[go-lsp]2024/07/27 11:38:24 main.go:73: Changed: file:///Users/asmarisayeva/Documents/Projects/go-lsp/README.md [{import "fmt"
+asjdaskj 
+
+# `go-lsp`
+}]
+[go-lsp]2024/07/27 11:38:25 main.go:38: Received message with method: textDocument/codeAction
+[go-lsp]2024/07/27 11:38:26 main.go:38: Received message with method: textDocument/didChange
+[go-lsp]2024/07/27 11:38:26 main.go:73: Changed: file:///Users/asmarisayeva/Documents/Projects/go-lsp/README.md [{// import "fmt"
+asjdaskj 
+
+# `go-lsp`
+}]
+[go-lsp]2024/07/27 11:38:37 main.go:38: Received message with method: shutdown

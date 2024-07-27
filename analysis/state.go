@@ -2,6 +2,8 @@ package analysis
 
 import (
 	"fmt"
+	"strings"
+
 	"github.com/MuradIsayev/go-lsp/lsp"
 )
 
@@ -58,5 +60,69 @@ func (s *State) Definition(id int, uri string, position lsp.Position) lsp.Defini
 			},
 		},
 	}
+}
 
+func (s *State) TextDocumentCodeAction(id int, uri string) lsp.TextDocumentCodeActionResponse {
+	text := s.Documents[uri]
+
+	actions := []lsp.CodeAction{}
+
+	for row, line := range strings.Split(text, "\n") {
+		if strings.Contains(line, "fmt") {
+			actions = append(actions, lsp.CodeAction{
+				Title: "Remove fmt",
+				Edit: &lsp.WorkspaceEdit{
+					Changes: map[string][]lsp.TextEdit{
+						uri: {
+							{
+								Range: lsp.Range{
+									Start: lsp.Position{
+										Line:      row,
+										Character: strings.Index(line, "fmt") - 1,
+									},
+									End: lsp.Position{
+										Line:      row,
+										Character: strings.Index(line, "fmt") + len("fmt") + 1,
+									},
+								},
+								NewText: "",
+							},
+						},
+					},
+				},
+			})
+
+			// another action to comment out the line
+			actions = append(actions, lsp.CodeAction{
+				Title: "Comment out the line",
+				Edit: &lsp.WorkspaceEdit{
+					Changes: map[string][]lsp.TextEdit{
+						uri: {
+							{
+								Range: lsp.Range{
+									Start: lsp.Position{
+										Line:      row,
+										Character: 0,
+									},
+									End: lsp.Position{
+										Line:      row,
+										Character: len(line),
+									},
+								},
+								NewText: "// " + line,
+							},
+						},
+					},
+				},
+			})
+		}
+	}
+
+	return lsp.TextDocumentCodeActionResponse{
+		Response: lsp.Response{
+			RPC: "2.0",
+			ID:  &id,
+		},
+		Result: actions,
+	}
 }
