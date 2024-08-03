@@ -16,12 +16,58 @@ func NewState() State {
 	return State{Documents: map[string]string{}}
 }
 
-func (s *State) OpenDocument(uri, text string) {
-	s.Documents[uri] = text
+func getDiagnosticsForFile(text string) []lsp.Diagnostic {
+	diagnostics := []lsp.Diagnostic{}
+	// in the file we are looking for the word go and if it is found we will return an error
+	for row, line := range strings.Split(text, "\n") {
+		if strings.Contains(line, "go") {
+			diagnostics = append(diagnostics, lsp.Diagnostic{
+				Range: lsp.Range{
+					Start: lsp.Position{
+						Line:      row,
+						Character: strings.Index(line, "go"),
+					},
+					End: lsp.Position{
+						Line:      row,
+						Character: strings.Index(line, "go") + len("go"),
+					},
+				},
+				Severity: lsp.DiagnosticSeverityError,
+				Message:  "Don't use the word go",
+			})
+		}
+		// in the file, if the word is rust, we will return an information message
+		if strings.Contains(line, "rust") {
+			diagnostics = append(diagnostics, lsp.Diagnostic{
+				Range: lsp.Range{
+					Start: lsp.Position{
+						Line:      row,
+						Character: strings.Index(line, "rust"),
+					},
+					End: lsp.Position{
+						Line:      row,
+						Character: strings.Index(line, "rust") + len("rust"),
+					},
+				},
+				Severity: lsp.DiagnosticSeverityInformation,
+				Message:  "You know what you are doing, Noice!",
+			})
+		}
+	}
+
+	return diagnostics
 }
 
-func (s *State) UpdateDocument(uri, text string) {
+func (s *State) OpenDocument(uri, text string) []lsp.Diagnostic {
 	s.Documents[uri] = text
+
+	return getDiagnosticsForFile(text)
+}
+
+func (s *State) UpdateDocument(uri, text string) []lsp.Diagnostic {
+	s.Documents[uri] = text
+
+	return getDiagnosticsForFile(text)
 }
 
 func (s *State) Hover(id int, uri string, position lsp.Position) lsp.HoverResponse {
@@ -125,4 +171,29 @@ func (s *State) TextDocumentCodeAction(id int, uri string) lsp.TextDocumentCodeA
 		},
 		Result: actions,
 	}
+}
+
+func (s *State) TextDocumentCompletion(id int, uri string) lsp.CompletionResponse {
+	items := []lsp.CompletionItem{
+		{
+
+			// Name of the completion item
+			Label: "fmt",
+
+			// Header of the completion item
+			Detail: "Package fmt",
+
+			// Description of the completion item
+			Documentation: "Package fmt implements formatted I/O with functions analogous to C's printf and scanf. The format 'verbs' are derived from C's but are simpler.",
+		},
+	}
+	response := lsp.CompletionResponse{
+		Response: lsp.Response{
+			RPC: "2.0",
+			ID:  &id,
+		},
+		Result: items,
+	}
+
+	return response
 }

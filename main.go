@@ -62,7 +62,21 @@ func handleMessage(logger *log.Logger, writer io.Writer, state analysis.State, m
 		logger.Printf("Opened: %s", notification.Params.TextDocument.URI)
 
 		// We got a document, and we have opened it
-		state.OpenDocument(notification.Params.TextDocument.URI, notification.Params.TextDocument.Text)
+		diagnostics := state.OpenDocument(notification.Params.TextDocument.URI, notification.Params.TextDocument.Text)
+		if len(diagnostics) > 0 {
+			notification := lsp.PublishDiagnosticsNotification{
+				Notification: lsp.Notification{
+					RPC:    "2.0",
+					Method: "textDocument/publishDiagnostics",
+				},
+				Params: lsp.PublishDiagnosticsParams{
+					URI:         notification.Params.TextDocument.URI,
+					Diagnostics: diagnostics,
+				},
+			}
+
+			writeResponse(writer, notification)
+		}
 	case "textDocument/didChange":
 		var notification lsp.DidChangeTextDocumentNotification
 		if err := json.Unmarshal(contents, &notification); err != nil {
@@ -73,7 +87,22 @@ func handleMessage(logger *log.Logger, writer io.Writer, state analysis.State, m
 		logger.Printf("Changed: %s %s", notification.Params.TextDocument.TextDocumentIdentifier.URI, notification.Params.ContentChanges)
 
 		for _, change := range notification.Params.ContentChanges {
-			state.UpdateDocument(notification.Params.TextDocument.TextDocumentIdentifier.URI, change.Text)
+			diagnostics := state.UpdateDocument(notification.Params.TextDocument.TextDocumentIdentifier.URI, change.Text)
+
+			if len(diagnostics) > 0 {
+				notification := lsp.PublishDiagnosticsNotification{
+					Notification: lsp.Notification{
+						RPC:    "2.0",
+						Method: "textDocument/publishDiagnostics",
+					},
+					Params: lsp.PublishDiagnosticsParams{
+						URI:         notification.Params.TextDocument.URI,
+						Diagnostics: diagnostics,
+					},
+				}
+
+				writeResponse(writer, notification)
+			}
 		}
 	case "textDocument/hover":
 		var request lsp.HoverRequest
@@ -104,6 +133,17 @@ func handleMessage(logger *log.Logger, writer io.Writer, state analysis.State, m
 		}
 
 		response := state.TextDocumentCodeAction(request.ID, request.Params.TextDocument.URI)
+
+		writeResponse(writer, response)
+
+	case "textDocument/completion":
+		var request lsp.CompletionRequest
+		if err := json.Unmarshal(contents, &request); err != nil {
+			logger.Printf("Couldn't parse the content with textDocument/completion method: %s", err)
+			return
+		}
+
+		response := state.TextDocumentCompletion(request.ID, request.Params.TextDocument.URI)
 
 		writeResponse(writer, response)
 	}

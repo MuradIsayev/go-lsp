@@ -25,10 +25,11 @@ type InitializeResult struct {
 }
 
 type ServerCapabilities struct {
-	TextDocumentSync   int  `json:"textDocumentSync"`
-	HoverProvider      bool `json:"hoverProvider"`
-	DefinitionProvider bool `json:"definitionProvider"`
-	CodeActionProvider bool `json:"codeActionProvider"`
+	TextDocumentSync   int            `json:"textDocumentSync"`
+	HoverProvider      bool           `json:"hoverProvider"`
+	DefinitionProvider bool           `json:"definitionProvider"`
+	CodeActionProvider bool           `json:"codeActionProvider"`
+	CompletionProvider map[string]any `json:"completionProvider"`
 }
 
 type ServerInfo struct {
@@ -52,6 +53,8 @@ func NewInitializeResponse(id int) InitializeResponse {
 				DefinitionProvider: true,
 				// tells IDE (client) that we support code action provider
 				CodeActionProvider: true,
+				// tells IDE (client) that we support completion provider
+				CompletionProvider: map[string]any{},
 			},
 			ServerInfo: ServerInfo{
 				Name:    "go-lsp",
