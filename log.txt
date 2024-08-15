@@ -1,6 +1,0 @@
-[go-lsp]2024/08/04 00:15:00 main.go:17: Starting LSP server
-[go-lsp]2024/08/04 00:15:00 main.go:38: Received message with method: initialize
-[go-lsp]2024/08/04 00:15:00 main.go:47: Connected to: Neovim 0.10.0-dev
-[go-lsp]2024/08/04 00:15:00 main.go:53: Sent the reply
-[go-lsp]2024/08/04 00:15:00 main.go:38: Received message with method: initialized
-[go-lsp]2024/08/04 00:16:07 main.go:38: Received message with method: shutdown
